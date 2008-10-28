@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Module-Extract-Use
-version:             0.10_01
+version:             0.11
 abstract:            Extract the modules that a modules uses
 license:             perl
 author:              
