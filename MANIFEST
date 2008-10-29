@@ -9,6 +9,5 @@ t/get_modules.t
 t/load.t
 t/pod.t
 t/pod_coverage.t
-t/prereq.t
 t/test_manifest
 META.yml                                 Module meta-data (added by MakeMaker)
