@@ -8,7 +8,7 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 =head1 NAME
 
@@ -96,7 +96,8 @@ sub get_modules {
 		
 	my $modules = $Document->find( 
 		sub {
-			$_[1]->isa( 'PPI::Statement::Include' )  && $_[1]->type eq 'use'
+			$_[1]->isa( 'PPI::Statement::Include' )  && 
+				( $_[1]->type eq 'use' || $_[1]->type eq 'require' )
 			}
 		);
 	
