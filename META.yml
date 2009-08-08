@@ -1,14 +1,12 @@
 --- #YAML:1.0
 name:               Module-Extract-Use
-version:            0.16
+version:            0.17
 abstract:           Extract the modules that a modules uses
 author:
     - brian d foy <bdfoy@cpan.org>
 license:            perl
 distribution_type:  module
 configure_requires:
-    ExtUtils::MakeMaker:  0
-build_requires:
     ExtUtils::MakeMaker:  0
 requires:
     perl:          5.006
@@ -21,11 +19,12 @@ no_index:
     directory:
         - t
         - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
+generated_by:       ExtUtils::MakeMaker version 6.48
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
 keywords:
-    - testing
-    - STDOUT
-    - STDERR
+    - ppi
+    - parsing
+    - static-analysis
+    - modules

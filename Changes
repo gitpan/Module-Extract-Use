@@ -1,5 +1,9 @@
 # Changes for Module::Extract::Use
 
+0.17 - Sat Aug  8 04:18:30 2009
+	* Removed failing test checking for empty files. PPI now 
+	handles those. :(
+
 0.16 - Wed Jun 10 00:21:12 2009
 	* Small distro cleanups and new META_MERGE hotness. No need
 	to upgrade.
