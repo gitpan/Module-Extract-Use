@@ -7,7 +7,7 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.18';
+$VERSION = '1.01';
 
 =head1 NAME
 
@@ -138,6 +138,8 @@ sub _get_ppi_for_file {
 				( $_[1]->type eq 'use' || $_[1]->type eq 'require' )
 			}
 		);
+
+	return unless $modules;
 
 	my %Seen;
 	my @modules =
