@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Module-Extract-Use
-version:            1.02
+version:            1.03
 abstract:           Extract the modules that a modules uses
 author:
     - brian d foy <bdfoy@cpan.org>

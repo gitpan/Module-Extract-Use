@@ -7,7 +7,7 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '1.02';
+$VERSION = '1.03';
 
 =head1 NAME
 
@@ -22,8 +22,8 @@ Module::Extract::Use - Pull out the modules a module uses
 	my @modules = $extor->get_modules( $file );
 	if( $extor->error ) { ... }
 
-	my @details = $extor->get_modules_with_details( $file );
-	foreach my $detail ( @details ) {
+	my $details = $extor->get_modules_with_details( $file );
+	foreach my $detail ( @$details ) {
 		printf "%s %s imports %s\n",
 			$detail->module, $detail->version,
 			join ' ', @{ $detail->imports }
@@ -98,6 +98,7 @@ explicitly use-d in FILE. Each reference has keys for:
 	namespace - the namespace, always defined
 	version   - defined if a module version was specified
 	imports   - an array reference to the import list
+	pragma    - true if the module thinks this namespace is a pragma
 
 Each used namespace is only in the list even if it is used multiple
 times in the file. The order of the list does not correspond to
@@ -145,16 +146,25 @@ sub _get_ppi_for_file {
 	my @modules =
 		grep { ! $Seen{ $_->{module} }++ && $_->{module} }
 		map  {
-			my $hash = {
+			my $hash = bless {
 				pragma  => $_->pragma,
 				module  => $_->module,
 				imports => [ $self->_list_contents( $_->arguments ) ],
 				version => eval{ $_->module_version->literal || ( undef ) },
-				};
+				}, 'Module::Extract::Use::Item';
 			} @$modules;
 
 	return \@modules;
 	}
+
+BEGIN {
+package Module::Extract::Use::Item;
+
+sub pragma  { $_[0]->{pragma}  }
+sub module  { $_[0]->{module}  }
+sub imports { $_[0]->{imports} }
+sub version { $_[0]->{version} }
+}
 
 sub _list_contents {
 	my( $self, $node ) = @_;
@@ -213,7 +223,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2008-2011, brian d foy, All Rights Reserved.
+Copyright (c) 2008-2012, brian d foy, All Rights Reserved.
 
 You may redistribute this under the same terms as Perl itself.
 
