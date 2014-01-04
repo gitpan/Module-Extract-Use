@@ -1,35 +1,29 @@
---- #YAML:1.0
-name:               Module-Extract-Use
-version:            1.03
-abstract:           Extract the modules that a modules uses
+---
+abstract: 'Extract the modules that a modules uses'
 author:
-    - brian d foy <bdfoy@cpan.org>
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+  - 'brian d foy <bdfoy@cpan.org>'
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    perl:          5.006
-    PPI:           0
-    Test::More:    0
-    Test::Output:  0
-resources:
-    repository:  git://github.com/briandfoy/module--extract--use.git
-no_index:
-    dir:
-        - corpus
-    directory:
-        - t
-        - inc
-        - corpus
-generated_by:       ExtUtils::MakeMaker version 6.55_02
-meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150'
 keywords:
-    - ppi
-    - parsing
-    - static-analysis
-    - modules
+  - ppi
+  - parsing
+  - static-analysis
+  - modules
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Module-Extract-Use
+no_index:
+  directory:
+    - corpus
+requires:
+  PPI: 0
+  Test::More: 0
+  Test::Output: 0
+resources: {}
+version: 1.04
